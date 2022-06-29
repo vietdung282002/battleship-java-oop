@@ -1,0 +1,204 @@
+/*
+Built in classes
+*/
+.root {
+	-fx-background-color: lightsteelblue;
+}
+
+.label {
+	-fx-font-size: 16px;
+	-fx-font-weight: bold;
+	-fx-text-fill: #3333AA;
+	-fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 0, 0, 0, 1);
+}
+
+.button, .toggle-button, .combo-box {
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-background-radius: 30;
+	-fx-background-insets: 0, 1, 2, 3, 0;
+	-fx-background-color: steelblue;
+	-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+	-fx-background-insets: 0, 1, 2, 3, 0;
+	-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+}
+
+.list-cell {
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-background-color: steelblue;
+}
+
+.button:hover, .toggle-button:hover {
+	-fx-background-color: dodgerblue;
+	-fx-cursor: HAND
+}
+
+.list-cell:hover {
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-background-color: dodgerblue;
+	-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+}
+
+.toggle-button {
+	-fx-cursor: HAND;
+}
+
+.button:pressed {
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-background-radius: 30;
+	-fx-background-insets: 0, 1, 2, 3, 0;
+	-fx-background-color: #1e90ff;
+	-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+	-fx-background-insets: 0, 1, 2, 3, 0;
+}
+
+/*
+Custom Classes
+*/
+.btn-start {
+	-fx-font-size: 80px
+}
+
+.btn-start-game {
+	-fx-font-size: 32px
+}
+
+.lbl-bottom {
+	-fx-font-style: italic;
+}
+
+.lbl-app-title {
+	-fx-font-weight: bold;
+	-fx-text-fill: cadetblue;
+	-fx-effect: innershadow(gaussian, darkslateblue, 10, 0.5, 0, 0);
+	-fx-font-size: 70px;
+}
+
+.title-normal {
+	-fx-font-size: 70px;
+}
+
+.title-small {
+	-fx-font-size: 35px;
+}
+
+.title-smallest {
+	-fx-font-size: 20px;
+}
+
+.btn-close {
+	-fx-opacity: 0.5;
+}
+
+.btn-close:hover {
+	-fx-opacity: 1.0;
+}
+
+.btn-fire {
+	-fx-font-size: 15px;
+	-fx-background-color: orangered;
+}
+
+.btn-fire:hover {
+	-fx-background-color: red;
+}
+
+.lbl-playerguessInfo {
+	-fx-font-size: 20px;
+	-fx-text-fill: azure;
+	-fx-text-alignment: CENTER
+}
+
+
+.lbl-playerguessInfo .text {
+	-fx-stroke: darkblue;
+	-fx-stroke-width: 1px;
+}
+
+.lbl-botguessInfo {
+	-fx-font-size: 9px;
+	-fx-text-fill: indianred;
+	-fx-text-alignment: CENTER
+}
+
+.lbl-botguessInfo .text {
+	-fx-stroke: white;
+	-fx-stroke-width: 0.5px;
+}
+
+.lbl-screen-title {
+	-fx-font-weight: bold;
+	-fx-text-fill: steelblue;
+	-fx-font-size: 20px;
+}
+
+.lbl-end-winner {
+	-fx-font-weight: bold;
+	-fx-text-fill: mediumturquoise;
+	-fx-font-size: 30px;
+}
+
+.lbl-end-winner .text {
+	-fx-stroke: darkblue;
+	-fx-stroke-width: 1px;
+}
+
+.lbl-end-loser {
+	-fx-font-weight: bold;
+	-fx-text-fill: lightslategray;
+	-fx-font-size: 30px;
+}
+
+.lbl-end-loser .text {
+	-fx-stroke: darkgray;
+	-fx-stroke-width: 1px;
+}
+
+.vb-end {
+	-fx-background-color: lightsteelblue;
+	-fx-border-color: darkblue;
+	-fx-border-insets: 2;
+	-fx-border-width: 4;
+	-fx-border-style: solid;
+}
+
+.btn-clear {
+	-fx-graphic: url('./images/trash.png');
+}
+
+.btn-random {
+	-fx-graphic: url('./images/random.png');
+}
+
+.toolbar>.button, .toolbar>.toggle-button {
+	-fx-background-color: white;
+}
+
+.toolbar>.combo-box, .toolbar>.button, .toolbar>.toggle-button {
+	-fx-min-height: 40px;
+	-fx-min-width: 50px;
+}
+
+.toolbar>.button:hover, .toolbar>.toggle-button:hover {
+	-fx-background-color: sandybrown;
+}
+
+.toolbar>.label {
+	-fx-font-size: 20px;
+	-fx-text-fill: #3333AA;
+}
+
+.tb-vertical {
+	-fx-graphic: url('./images/horizontal.png');
+}
+
+.tb-vertical:selected {
+	-fx-graphic: url('./images/vertical.png');
+}
+
+.game-canvas:disabled {
+	-fx-opacity: 0.9;
+}

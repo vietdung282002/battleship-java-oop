@@ -2,11 +2,11 @@ package org.fxapps.battleship.model;
 
 public enum Ship {
 
-    CARRIER("Carrier", 5),
-    BATTLESHIP("Battleship", 4),
-    CRUISER("Cruiser", 3),
+    CARRIER("Carrier", 4),
+    BATTLESHIP("Battleship", 3),
+    CRUISER("Cruiser", 2),
     SUBMARINE("Submarine", 3),
-    DESTROYER("Destroyer", 2);
+    DESTROYER("Destroyer", 5);
 
     final int spaces;
     final String name;

@@ -58,7 +58,7 @@ public class PreparationScreen implements Screen {
         btnStart.setPrefSize(canvas.getWidth(), 100);
         btnRandom.getStyleClass().add("btn-random");
         cbDifficulty.getItems().addAll(Difficulty.values());
-        cbDifficulty.getSelectionModel().select(Difficulty.MEDIUM);
+        cbDifficulty.getSelectionModel().select(Difficulty.EASY);
 
         // removing for now the hability to manually add ships
         hbShipConf.getChildren().addAll(new Label("Ship "),
@@ -176,7 +176,7 @@ public class PreparationScreen implements Screen {
 
     @Override
     public void resize(double width, double height) {
-        canvas.setWidth(width);
+        canvas.setWidth(width-(width/2)-5);
         canvas.setHeight(height - (height / 4) - 20);
         paintBoard();
     }

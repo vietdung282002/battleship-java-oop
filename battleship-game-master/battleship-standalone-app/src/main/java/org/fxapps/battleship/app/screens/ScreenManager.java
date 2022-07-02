@@ -20,12 +20,12 @@ public class ScreenManager {
     private StackPane root;
 
     private FadeTransition ft;
-    final List<Screen> screens;
-    final Screen homeScren;
+    private List<Screen> screens;
+    private Screen homeScren;
     private Screen currentScreen;
-    final Map<String, Label> labels = new HashMap<>();
-    final double width;
-    final double height;
+    private Map<String, Label> labels = new HashMap<>();
+    private double width;
+    private double height;
     
     public ScreenManager(double width, double height, Screen... screens) {
         this.width = width;

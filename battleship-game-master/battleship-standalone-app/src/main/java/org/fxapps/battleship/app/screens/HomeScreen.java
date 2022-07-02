@@ -1,14 +1,18 @@
 package org.fxapps.battleship.app.screens;
 
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 
 public class HomeScreen implements Screen {
+
 
     private Runnable startAction;
     private BorderPane borderPane;
@@ -21,9 +25,10 @@ public class HomeScreen implements Screen {
     }
 
     public void init() {
+
         var btnStart = new Button("Start");
-        
-        lblTop = new Label("BattleshipFX");
+
+        lblTop = new Label("Battleship");
         borderPane = new BorderPane();
         lblTop.getStyleClass().add("lbl-app-title");
         lblTop.getStyleClass().add("normal-title");
@@ -33,9 +38,10 @@ public class HomeScreen implements Screen {
         borderPane.setTop(lblTop);
         borderPane.setCenter(btnStart);
 
-        BorderPane.setMargin(lblTop, new Insets(50, 0, 0, 0));
+        BorderPane.setMargin(lblTop, new Insets(50, 0, 150, 0));
         BorderPane.setAlignment(lblTop, Pos.BOTTOM_CENTER);
-        BorderPane.setAlignment(btnStart, Pos.CENTER);
+        BorderPane.setAlignment(btnStart, Pos.TOP_CENTER);
+
     }
 
     @Override

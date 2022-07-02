@@ -2,11 +2,10 @@ package org.fxapps.battleship.app.model;
 
 public enum Difficulty {
 
-    HARDEST(70),
-    HARD(50),
-    MEDIUM(25),
-    EASY(10),
-    EASIEST(1);
+    HARD(70),
+
+    EASY(10);
+
 
     int hitProbability;
 

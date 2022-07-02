@@ -59,7 +59,11 @@ Built in classes
 Custom Classes
 */
 .btn-start {
-	-fx-font-size: 80px
+	-fx-font-size: 60px
+}
+
+.btn-score {
+	-fx-font-size: 60px
 }
 
 .btn-start-game {

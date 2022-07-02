@@ -114,10 +114,11 @@ public class GameScreen implements Screen {
 
     @Override
     public void resize(double width, double height) {
-
-        player2Canvas.setWidth(width - 40);
+        playerCanvas.setWidth(width - (width/2)-40);
+        playerCanvas.setHeight(height - (height / 4) - 30);
+        player2Canvas.setWidth(width - (width/2)-40);
         player2Canvas.setHeight(height - (height / 4) - 30);
-        btnFire.setMinSize(width, height / 20);
+        btnFire.setMinSize(width/20, height / 20);
 
         if (this.manager != null) {
             paintBoards();
@@ -129,7 +130,7 @@ public class GameScreen implements Screen {
     }
 
     private void buildUI() {
-        var vbGameOverOverlay = new VBox(20);
+        var vbGameOverOverlay = new VBox(40);
         var btnNewGame = new Button("New Game");
         
         btnFire = new Button("Fire");
@@ -137,8 +138,8 @@ public class GameScreen implements Screen {
         lblHits = new Label("Total Hits: 20");
         lblMisses = new Label("Total Miss: 30");
         lblTime = new Label("Time: 30 minutes");
-        player2Canvas = new Canvas(700, 700);
-        playerCanvas = new Canvas(100, 100);
+        player2Canvas = new Canvas(400, 400);
+        playerCanvas = new Canvas(400, 400);
         lblPlayerGuessResult = new Label();
         lblBotGuessResult = new Label();
 
@@ -171,7 +172,7 @@ public class GameScreen implements Screen {
         btnNewGame.setOnAction(e -> homeScreenCallback.run());
         vbGameOverOverlay.getChildren().addAll(lblEndTitle, lblTime, lblHits, lblMisses, btnNewGame);
         vbGameOverOverlay.setAlignment(Pos.CENTER);
-        vbGameOverOverlay.setMaxSize(250, 250);
+        vbGameOverOverlay.setMaxSize(500, 500);
         
         var playerBoardContainer = new StackPane(player2Canvas, lblPlayerGuessResult);
         
@@ -222,8 +223,8 @@ public class GameScreen implements Screen {
                                                        new KeyValue(target.opacityProperty(), 1.0),
                                                        new KeyValue(target.scaleXProperty(), 5),
                                                        new KeyValue(target.scaleYProperty(), 5)),
-                                          new KeyFrame(Duration.millis(500)),
-                                          new KeyFrame(Duration.millis(600),
+                                                       new KeyFrame(Duration.millis(500)),
+                                                       new KeyFrame(Duration.millis(600),
                                                        new KeyValue(target.opacityProperty(), 0)));
         animation.setOnFinished(evt -> {
             target.setScaleX(1);

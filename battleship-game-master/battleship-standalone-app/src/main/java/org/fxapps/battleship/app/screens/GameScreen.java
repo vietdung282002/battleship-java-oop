@@ -120,6 +120,7 @@ public class GameScreen implements Screen {
         player2Canvas.setHeight(height - (height / 4) - 30);
         btnFire.setMinSize(width/20, height / 20);
 
+
         if (this.manager != null) {
             paintBoards();
         }
@@ -130,6 +131,9 @@ public class GameScreen implements Screen {
     }
 
     private void buildUI() {
+        var vbox = new VBox();
+        vbox.setSpacing(30);
+        vbox.setAlignment(Pos.CENTER);
         var vbGameOverOverlay = new VBox(40);
         var btnNewGame = new Button("New Game");
         
@@ -138,8 +142,8 @@ public class GameScreen implements Screen {
         lblHits = new Label("Total Hits: 20");
         lblMisses = new Label("Total Miss: 30");
         lblTime = new Label("Time: 30 minutes");
-        player2Canvas = new Canvas(400, 400);
-        playerCanvas = new Canvas(400, 400);
+        player2Canvas = new Canvas(600, 600);
+        playerCanvas = new Canvas(600, 600);
         lblPlayerGuessResult = new Label();
         lblBotGuessResult = new Label();
 
@@ -161,7 +165,7 @@ public class GameScreen implements Screen {
 
         btnFire.disableProperty().bind(targetLocationProperty.isNull().or(isPlayerTurnProperty.not()));
         
-        btnFire.setMinSize(player2Canvas.getWidth(), 70);
+        btnFire.setMinSize(player2Canvas.getWidth()/2, 70);
 
         btnFire.setContentDisplay(ContentDisplay.RIGHT);
         btnFire.getStyleClass().add("btn-fire");
@@ -173,26 +177,31 @@ public class GameScreen implements Screen {
         vbGameOverOverlay.getChildren().addAll(lblEndTitle, lblTime, lblHits, lblMisses, btnNewGame);
         vbGameOverOverlay.setAlignment(Pos.CENTER);
         vbGameOverOverlay.setMaxSize(500, 500);
-        
+
+
         var playerBoardContainer = new StackPane(player2Canvas, lblPlayerGuessResult);
         
         VBox.setMargin(lblEndTitle, new Insets(5, 0, 10, 0));
         VBox.setMargin(playerBoardContainer, new Insets(5, 0, 0, 0));
-        var vbGame = new VBox(5,
-                              playerBoardContainer,
-                              btnFire,
-                              new Separator(Orientation.HORIZONTAL),
-                              new StackPane(playerCanvas, lblBotGuessResult));
-        vbGame.setAlignment(Pos.CENTER);
+        var hbGame = new HBox(20,
+                              new StackPane(playerCanvas, lblBotGuessResult),
+                              playerBoardContainer
+                              );
+        hbGame.setAlignment(Pos.CENTER);
+
+        vbox.getChildren().add(hbGame);
+        vbox.getChildren().add(btnFire);
+
+
         StackPane.setAlignment(vbGameOverOverlay, Pos.TOP_CENTER);
 
-        root = new StackPane(vbGame, vbGameOverOverlay);
+        root = new StackPane(vbox, vbGameOverOverlay);
 
-        vbGame.disableProperty().bind(playerHitAnimation.statusProperty()
+        hbGame.disableProperty().bind(playerHitAnimation.statusProperty()
                                                         .isEqualTo(Status.RUNNING)
                                                         .or(botHitAnimation.statusProperty().isEqualTo(Status.RUNNING))
                                                         .or(gameStateProperty.isNotEqualTo(GameState.STARTED)));
-        playerCanvas.disableProperty().bind(vbGame.disableProperty());
+        playerCanvas.disableProperty().bind(hbGame.disableProperty());
         vbGameOverOverlay.visibleProperty().bind(gameStateProperty.isEqualTo(GameState.FINISHED));
 
         gameStateProperty.addListener(l -> {

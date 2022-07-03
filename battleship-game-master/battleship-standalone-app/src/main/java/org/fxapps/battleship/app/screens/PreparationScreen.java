@@ -40,10 +40,10 @@ public class PreparationScreen implements Screen {
         var btnRandom = new Button();
         var btnReset = new Button();
         var btnStart = new Button("START");
-        var hbShipConf = new HBox(10);
+        var hbShipConf = new HBox(20);
         var cbDifficulty = new ChoiceBox<Difficulty>();
 
-        canvas = new Canvas(700, 700);
+        canvas = new Canvas(900, 850);
         cbShips = new ComboBox<>();
         root = new VBox(10);
         tbIsVertical = new ToggleButton();
@@ -55,7 +55,7 @@ public class PreparationScreen implements Screen {
         btnReset.setOnAction(e -> reset());
         btnStart.getStyleClass().add("btn-start-game");
         btnStart.disableProperty().bind(cbShips.disableProperty().not());
-        btnStart.setPrefSize(canvas.getWidth(), 100);
+        btnStart.setPrefSize(canvas.getWidth(), 50);
         btnRandom.getStyleClass().add("btn-random");
         cbDifficulty.getItems().addAll(Difficulty.values());
         cbDifficulty.getSelectionModel().select(Difficulty.EASY);

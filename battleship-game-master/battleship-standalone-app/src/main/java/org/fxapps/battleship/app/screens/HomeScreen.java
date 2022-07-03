@@ -77,7 +77,7 @@ public class HomeScreen implements Screen {
     @Override
     public void onShow() {
         // do nothing
-
+        
     }
 
     @Override
@@ -93,10 +93,10 @@ public class HomeScreen implements Screen {
             lblTop.getStyleClass().remove("title-normal");
             lblTop.getStyleClass().add("title-small");
         }
-        else {
-            lblTop.getStyleClass().remove("title-smallest");
-            lblTop.getStyleClass().remove("title-small");
-            lblTop.getStyleClass().add("title-normal");
-        }
+       else {
+           lblTop.getStyleClass().remove("title-smallest");
+           lblTop.getStyleClass().remove("title-small");
+           lblTop.getStyleClass().add("title-normal");
+        }        
     }
 }

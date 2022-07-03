@@ -29,6 +29,11 @@ Built in classes
 	-fx-background-color: steelblue;
 }
 
+.text-name{
+    -fx-text-fill: white;
+    -fx-font-size: 25px;
+}
+
 .button:hover, .toggle-button:hover {
 	-fx-background-color: dodgerblue;
 	-fx-cursor: HAND

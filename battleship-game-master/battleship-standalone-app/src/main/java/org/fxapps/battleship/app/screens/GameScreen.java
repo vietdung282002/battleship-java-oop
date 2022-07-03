@@ -1,5 +1,6 @@
 package org.fxapps.battleship.app.screens;
 
+import java.awt.*;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Collections;
@@ -20,12 +21,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Shape;
 import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 import org.fxapps.battleship.app.model.GamePreparationData;
 import org.fxapps.battleship.app.utils.BattleshipPainter;
@@ -79,6 +85,10 @@ public class GameScreen implements Screen {
 
     private Labeled lblMisses;
 
+    private Text PlayerName;
+
+    private Text Player2Name;
+
     private Button btnFire;
 
     public GameScreen() {
@@ -131,6 +141,7 @@ public class GameScreen implements Screen {
     }
 
     private void buildUI() {
+
         var vbox = new VBox();
         vbox.setSpacing(30);
         vbox.setAlignment(Pos.CENTER);
@@ -183,12 +194,38 @@ public class GameScreen implements Screen {
         
         VBox.setMargin(lblEndTitle, new Insets(5, 0, 10, 0));
         VBox.setMargin(playerBoardContainer, new Insets(5, 0, 0, 0));
-        var hbGame = new HBox(20,
+
+        var Rec1 = new Rectangle(player2Canvas.getWidth()-5,50);
+        var Rec2 = new Rectangle(player2Canvas.getWidth()-5,50);
+
+        PlayerName =new Text("PlayerName");
+        Player2Name = new Text("Computer");
+
+
+
+        var hbName = new HBox(50,
+                                new StackPane(Rec1, PlayerName),
+                                new StackPane(Rec2, Player2Name));
+
+        hbName.setAlignment(Pos.CENTER);
+
+        Rec1.setFill(Color.STEELBLUE);
+        Rec2.setFill(Color.STEELBLUE);
+        Rec1.setArcHeight(105);
+        Rec1.setArcWidth(50);
+        Rec2.setArcHeight(105);
+        Rec2.setArcWidth(50);
+
+        PlayerName.getStyleClass().add("text-name");
+        Player2Name.getStyleClass().add("text-name");
+
+        var hbGame = new HBox(30,
                               new StackPane(playerCanvas, lblBotGuessResult),
                               playerBoardContainer
                               );
         hbGame.setAlignment(Pos.CENTER);
 
+        vbox.getChildren().add(hbName);
         vbox.getChildren().add(hbGame);
         vbox.getChildren().add(btnFire);
 

@@ -97,12 +97,12 @@ public class BattleshipPainter {
                 ctx.strokeRect(x, y, tileWidth, tileHeight);
                 if (i == 0) {
                     ctx.setFill(Color.WHITE);
-                    ctx.fillText(j + 1 + "", 2, y + tileHeight - 2);
+                    //ctx.fillText(j + 1 + "", 2, y + tileHeight - 2);
                 }
                 if (j == 0) {
                     ctx.setFill(Color.WHITE);
                     char charCode = (char) (65 + i);
-                    ctx.fillText(String.valueOf(charCode), x + 2, 15);
+                    //ctx.fillText(String.valueOf(charCode), x + 2, 15);
                 }
             }
         }

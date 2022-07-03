@@ -142,8 +142,8 @@ public class GameScreen implements Screen {
         lblHits = new Label("Total Hits: 20");
         lblMisses = new Label("Total Miss: 30");
         lblTime = new Label("Time: 30 minutes");
-        player2Canvas = new Canvas(600, 600);
-        playerCanvas = new Canvas(600, 600);
+        player2Canvas = new Canvas(800, 800);
+        playerCanvas = new Canvas(800, 800);
         lblPlayerGuessResult = new Label();
         lblBotGuessResult = new Label();
 

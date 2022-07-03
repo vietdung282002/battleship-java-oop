@@ -25,7 +25,7 @@ public class HomeScreen implements Screen {
     }
 
     public void init() {
-        VBox root =new VBox();
+        VBox root = new VBox();
         root.setAlignment(Pos.TOP_CENTER);
         root.setSpacing(60);
         root.setPadding(new Insets(15,20, 10,10));
@@ -33,7 +33,7 @@ public class HomeScreen implements Screen {
         var btnStart = new Button("Start");
         var btnScore = new Button("LeaderBoard");
         var btnMusic = new Button("Music");
-
+        
         lblTop = new Label("Battleship");
         borderPane = new BorderPane();
         lblTop.getStyleClass().add("lbl-app-title");
@@ -50,13 +50,10 @@ public class HomeScreen implements Screen {
         root.getChildren().add(btnScore);
         root.getChildren().add(btnMusic);
 
-
-
         BorderPane.setMargin(lblTop, new Insets(50, 0, 150, 0));
         BorderPane.setAlignment(lblTop, Pos.BOTTOM_CENTER);
         BorderPane.setMargin(root, new Insets(25, 0, 50, 0));
         BorderPane.setAlignment(root, Pos.CENTER);
-
 
     }
 

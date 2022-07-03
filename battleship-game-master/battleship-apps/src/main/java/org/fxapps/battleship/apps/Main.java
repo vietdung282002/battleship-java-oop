@@ -2,6 +2,9 @@ package org.fxapps.battleship.apps;
 
 
 import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.fxapps.battleship.app.ScreenManagerFactory;
@@ -25,7 +28,9 @@ public class Main extends Application {
         var manager = factory.newScreenManager(WIDTH, HEIGHT);
         var gameRoot = manager.root();
         var scene = new Scene(new StackPane(gameRoot), WIDTH, HEIGHT);
+
         scene.getStylesheets().add("battleship-style.css");
+        stage.setTitle("Battleship");
         stage.setMaximized(true);
         stage.setScene(scene);
         stage.show();

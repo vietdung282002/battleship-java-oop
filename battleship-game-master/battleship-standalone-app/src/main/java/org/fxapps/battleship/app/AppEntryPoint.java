@@ -1,16 +1,12 @@
-package org.fxapps.battleship.apps;
-
+package org.fxapps.battleship.app;
 
 import javafx.application.Application;
+import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import org.fxapps.battleship.app.ScreenManagerFactory;
-import org.fxapps.battleship.app.screens.ScreenManager;
-
-import javafx.scene.Scene;
 
 
-public class Main extends Application {
+public class AppEntryPoint extends Application {
 
     private static final int WIDTH = 1600;
     private static final int HEIGHT = 1000;
@@ -34,5 +30,4 @@ public class Main extends Application {
         scene.widthProperty().addListener(l -> resize.run());
         scene.heightProperty().addListener(l -> resize.run());
     }
-
 }

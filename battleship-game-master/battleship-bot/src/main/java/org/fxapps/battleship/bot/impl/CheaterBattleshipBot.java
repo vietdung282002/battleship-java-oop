@@ -8,11 +8,7 @@ import org.fxapps.battleship.model.Location;
 import org.fxapps.battleship.model.ShipPosition;
 
 /**
- * 
  * A bot that can cheat on ships positions and randomly hits ships
- *  
- * @author wsiqueir
- *
  */
 public class CheaterBattleshipBot extends BattleshipRandomBot {
 

@@ -5,13 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-/**
- * 
- * Game Information
- * 
- * @author wsiqueir
- *
- */
+
 public class GameStats {
 
     private String id;

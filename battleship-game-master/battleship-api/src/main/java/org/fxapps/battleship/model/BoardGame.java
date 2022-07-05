@@ -62,8 +62,6 @@ public class BoardGame {
 
     /**
      * Calculate the winner
-     * 
-     * @return
      *  An optional containing the winner or empty if it is a draw
      */
     Optional<Player> getWinner() {

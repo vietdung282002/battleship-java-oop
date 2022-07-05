@@ -85,6 +85,8 @@ public class GameScreen implements Screen {
 
     private Labeled lblMisses;
 
+    private Labeled lblScore;
+
     private Text PlayerName;
 
     private Text Player2Name;
@@ -153,6 +155,7 @@ public class GameScreen implements Screen {
         lblHits = new Label("Total Hits: 20");
         lblMisses = new Label("Total Miss: 30");
         lblTime = new Label("Time: 30 minutes");
+        lblScore = new Label("Your point: 100 point");
         player2Canvas = new Canvas(800, 800);
         playerCanvas = new Canvas(800, 800);
         lblPlayerGuessResult = new Label();
@@ -185,7 +188,7 @@ public class GameScreen implements Screen {
         lblEndTitle.getStyleClass().add("lbl-end-winner");
         vbGameOverOverlay.getStyleClass().add("vb-end");
         btnNewGame.setOnAction(e -> homeScreenCallback.run());
-        vbGameOverOverlay.getChildren().addAll(lblEndTitle, lblTime, lblHits, lblMisses, btnNewGame);
+        vbGameOverOverlay.getChildren().addAll(lblEndTitle, lblTime, lblHits, lblMisses,lblScore, btnNewGame);
         vbGameOverOverlay.setAlignment(Pos.CENTER);
         vbGameOverOverlay.setMaxSize(500, 500);
 
@@ -213,7 +216,7 @@ public class GameScreen implements Screen {
         Rec2.setFill(Color.STEELBLUE);
         Rec1.setArcHeight(105);
         Rec1.setArcWidth(50);
-        Rec2.setArcHeight(105);
+        Rec2.setArcHeight(75);
         Rec2.setArcWidth(50);
 
         PlayerName.getStyleClass().add("text-name");
@@ -256,12 +259,13 @@ public class GameScreen implements Screen {
         var totalMinutes = stats.getStarted().until(LocalDateTime.now(), ChronoUnit.MINUTES);
         var guesses = stats.getGuesses().get(player);
         var isWin = stats.getWinner().get() == player;
+        var wr= guesses.stream().filter(g -> !g.isHit()).count();
         lblEndTitle.setText(isWin ? "You Win!" : "You lose!");
         lblEndTitle.getStyleClass().clear();
         lblEndTitle.getStyleClass().add(isWin ? "lbl-end-winner" : "lbl-end-loser");
         lblTime.setText("Time: " + totalMinutes + "m " + totalSeconds + "s");
         lblHits.setText("Total Guesses: " + guesses.size());
-        lblMisses.setText("Wrong Guesses: " + guesses.stream().filter(g -> !g.isHit()).count());
+        lblMisses.setText("Wrong Guesses: " + wr);
     }
 
     private Timeline buildTransitions(Node target, Runnable onFinished) {

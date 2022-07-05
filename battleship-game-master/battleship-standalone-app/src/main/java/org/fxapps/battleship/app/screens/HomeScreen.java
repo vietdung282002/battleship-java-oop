@@ -32,7 +32,6 @@ public class HomeScreen implements Screen {
 
         var btnStart = new Button("Start");
         var btnScore = new Button("LeaderBoard");
-        var btnMusic = new Button("Music");
         
         lblTop = new Label("Battleship");
         borderPane = new BorderPane();
@@ -40,7 +39,6 @@ public class HomeScreen implements Screen {
         lblTop.getStyleClass().add("normal-title");
         btnStart.getStyleClass().add("btn-start");
         btnScore.getStyleClass().add("btn-start");
-        btnMusic.getStyleClass().add("btn-start");
 
 
         btnStart.setOnAction(e -> startAction.run());
@@ -48,7 +46,6 @@ public class HomeScreen implements Screen {
         borderPane.setCenter(root);
         root.getChildren().add(btnStart);
         root.getChildren().add(btnScore);
-        root.getChildren().add(btnMusic);
 
         BorderPane.setMargin(lblTop, new Insets(50, 0, 150, 0));
         BorderPane.setAlignment(lblTop, Pos.BOTTOM_CENTER);

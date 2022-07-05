@@ -74,8 +74,6 @@ public class Board {
     /**
      * 
      * Removes all positions with a given ship
-     * @param ship
-     * @return
      * true if some ship was removed, false otherwise
      */
     public boolean removeShip(Ship ship) {

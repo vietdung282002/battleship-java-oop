@@ -12,7 +12,6 @@ public class ShipPosition {
     private int endY;
     private boolean isVertical;
     private List<Location> locations;
-
     public static ShipPosition horizontal(Ship ship, int x, int y) {
         return create(ship, x, y, false);
     }

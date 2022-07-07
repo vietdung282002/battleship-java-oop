@@ -2,7 +2,8 @@
 Built in classes
 */
 .root {
-	/*-fx-background-color: blue;*/
+	-fx-background-image: url('./images/background.jpg');
+    -fx-background-size: cover;
 }
 
 

@@ -17,6 +17,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import org.fxapps.battleship.app.model.Difficulty;
 import org.fxapps.battleship.app.model.GamePreparationData;
 import org.fxapps.battleship.app.utils.BattleshipPainter;
@@ -43,7 +44,8 @@ public class PreparationScreen implements Screen {
         var hbShipConf = new HBox(20);
         var cbDifficulty = new ChoiceBox<Difficulty>();
 
-        canvas = new Canvas(900, 850);
+        canvas = new Canvas(700, 700);
+
         cbShips = new ComboBox<>();
         root = new VBox(10);
         tbIsVertical = new ToggleButton();
@@ -62,16 +64,16 @@ public class PreparationScreen implements Screen {
 
         // removing for now the hability to manually add ships
         hbShipConf.getChildren().addAll(new Label("Ship "),
-                                        cbShips,
-                                        tbIsVertical,
-                                        btnRandom,
-                                        btnReset,
-                                        new Separator(Orientation.VERTICAL),
-                                        new Label("Difficulty "),
-                                        cbDifficulty);
+                cbShips,
+                tbIsVertical,
+                btnRandom,
+                btnReset,
+                new Separator(Orientation.VERTICAL),
+                new Label("Difficulty "),
+                cbDifficulty);
         hbShipConf.setAlignment(Pos.CENTER);
         hbShipConf.getStyleClass().add("toolbar");
-        
+
         root.getChildren().addAll(hbShipConf, buildBoardRepresentation(), btnStart);
         root.setAlignment(Pos.CENTER);
 
@@ -79,7 +81,7 @@ public class PreparationScreen implements Screen {
 
         cbShips.getItems().addListener((Observable obs) -> cbShips.setDisable(cbShips.getItems().isEmpty()));
         tbIsVertical.disableProperty().bind((cbShips.disableProperty()));
-        
+
         btnStart.setOnAction(e -> {
             var difficult = cbDifficulty.getSelectionModel().getSelectedItem();
             var shipsPositions = board.getShipsPositions();
@@ -121,7 +123,7 @@ public class PreparationScreen implements Screen {
                 board.removeShip(ship);
                 Location location = BattleshipPainter.getLocationOnBoard(e);
                 board.placeShip(ship, location, tbIsVertical.isSelected())
-                     .ifPresent(pos -> cleanShipAndSelectNext(ship));
+                        .ifPresent(pos -> cleanShipAndSelectNext(ship));
             }
         });
         canvas.setOnMouseMoved(e -> {
@@ -133,7 +135,7 @@ public class PreparationScreen implements Screen {
             }
             paintBoard();
         });
-        
+
         canvas.setOnMouseExited(e -> {
             Ship ship = cbShips.getSelectionModel().getSelectedItem();
             board.removeShip(ship);
@@ -150,7 +152,7 @@ public class PreparationScreen implements Screen {
     }
 
     private void paintBoard() {
-        BattleshipPainter.paintBoard(canvas, board);
+        BattleshipPainter.paintBoard(canvas, board, Color.STEELBLUE);
     }
 
     @Override

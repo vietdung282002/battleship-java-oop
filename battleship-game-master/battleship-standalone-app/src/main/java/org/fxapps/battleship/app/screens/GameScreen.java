@@ -1,6 +1,5 @@
 package org.fxapps.battleship.app.screens;
 
-import java.awt.*;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Collections;
@@ -13,7 +12,6 @@ import javafx.animation.Timeline;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.geometry.Insets;
-import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
@@ -22,15 +20,12 @@ import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Shape;
-import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import org.fxapps.battleship.app.model.GamePreparationData;
@@ -86,16 +81,11 @@ public class GameScreen implements Screen {
     private Labeled lblMisses;
 
     private Labeled lblScore;
-
     private Text PlayerName;
 
     private Text Player2Name;
 
     private Button btnFire;
-
-    public GameScreen() {
-        buildUI();
-    }
 
     public GameScreen(Runnable homeScreenCallback) {
         this.homeScreenCallback = homeScreenCallback;
@@ -126,9 +116,9 @@ public class GameScreen implements Screen {
 
     @Override
     public void resize(double width, double height) {
-        playerCanvas.setWidth(width - (width/2)-40);
+        playerCanvas.setWidth(width/2-40);
         playerCanvas.setHeight(height - (height / 4) - 30);
-        player2Canvas.setWidth(width - (width/2)-40);
+        player2Canvas.setWidth(width/2-40);
         player2Canvas.setHeight(height - (height / 4) - 30);
         btnFire.setMinSize(width/20, height / 20);
 
@@ -149,19 +139,19 @@ public class GameScreen implements Screen {
         vbox.setAlignment(Pos.CENTER);
         var vbGameOverOverlay = new VBox(40);
         var btnNewGame = new Button("New Game");
-        
+
         btnFire = new Button("Fire");
         lblEndTitle = new Label("You Lose!");
         lblHits = new Label("Total Hits: 20");
         lblMisses = new Label("Total Miss: 30");
         lblTime = new Label("Time: 30 minutes");
-        lblScore = new Label("Your point: 100 point");
+        lblScore = new Label("Score");
         player2Canvas = new Canvas(800, 800);
         playerCanvas = new Canvas(800, 800);
         lblPlayerGuessResult = new Label();
         lblBotGuessResult = new Label();
 
-        playerCanvas.getStyleClass().add("game-canvas");        
+        playerCanvas.getStyleClass().add("game-canvas");
         player2Canvas.getStyleClass().add("game-canvas");
         player2Canvas.setOnMouseClicked(this::updateTarget);
         player2Canvas.setOnTouchReleased(e -> this.updateTarget(null));
@@ -178,7 +168,7 @@ public class GameScreen implements Screen {
         lblBotGuessResult.setOpacity(0.0);
 
         btnFire.disableProperty().bind(targetLocationProperty.isNull().or(isPlayerTurnProperty.not()));
-        
+
         btnFire.setMinSize(player2Canvas.getWidth()/2, 70);
 
         btnFire.setContentDisplay(ContentDisplay.RIGHT);
@@ -194,7 +184,7 @@ public class GameScreen implements Screen {
 
 
         var playerBoardContainer = new StackPane(player2Canvas, lblPlayerGuessResult);
-        
+
         VBox.setMargin(lblEndTitle, new Insets(5, 0, 10, 0));
         VBox.setMargin(playerBoardContainer, new Insets(5, 0, 0, 0));
 
@@ -207,25 +197,25 @@ public class GameScreen implements Screen {
 
 
         var hbName = new HBox(50,
-                                new StackPane(Rec1, PlayerName),
-                                new StackPane(Rec2, Player2Name));
+                new StackPane(Rec1, PlayerName),
+                new StackPane(Rec2, Player2Name));
 
         hbName.setAlignment(Pos.CENTER);
 
-        Rec1.setFill(Color.STEELBLUE);
-        Rec2.setFill(Color.STEELBLUE);
+        Rec1.setFill(Color.GREENYELLOW);
+        Rec2.setFill(Color.GREENYELLOW);
         Rec1.setArcHeight(105);
         Rec1.setArcWidth(50);
-        Rec2.setArcHeight(75);
+        Rec2.setArcHeight(105);
         Rec2.setArcWidth(50);
 
         PlayerName.getStyleClass().add("text-name");
         Player2Name.getStyleClass().add("text-name");
 
         var hbGame = new HBox(30,
-                              new StackPane(playerCanvas, lblBotGuessResult),
-                              playerBoardContainer
-                              );
+                new StackPane(playerCanvas, lblBotGuessResult),
+                playerBoardContainer
+        );
         hbGame.setAlignment(Pos.CENTER);
 
         vbox.getChildren().add(hbName);
@@ -238,9 +228,9 @@ public class GameScreen implements Screen {
         root = new StackPane(vbox, vbGameOverOverlay);
 
         hbGame.disableProperty().bind(playerHitAnimation.statusProperty()
-                                                        .isEqualTo(Status.RUNNING)
-                                                        .or(botHitAnimation.statusProperty().isEqualTo(Status.RUNNING))
-                                                        .or(gameStateProperty.isNotEqualTo(GameState.STARTED)));
+                .isEqualTo(Status.RUNNING)
+                .or(botHitAnimation.statusProperty().isEqualTo(Status.RUNNING))
+                .or(gameStateProperty.isNotEqualTo(GameState.STARTED)));
         playerCanvas.disableProperty().bind(hbGame.disableProperty());
         vbGameOverOverlay.visibleProperty().bind(gameStateProperty.isEqualTo(GameState.FINISHED));
 
@@ -259,23 +249,27 @@ public class GameScreen implements Screen {
         var totalMinutes = stats.getStarted().until(LocalDateTime.now(), ChronoUnit.MINUTES);
         var guesses = stats.getGuesses().get(player);
         var isWin = stats.getWinner().get() == player;
-        var wr= guesses.stream().filter(g -> !g.isHit()).count();
+        var wrongguess = guesses.stream().filter(g -> !g.isHit()).count();
         lblEndTitle.setText(isWin ? "You Win!" : "You lose!");
         lblEndTitle.getStyleClass().clear();
         lblEndTitle.getStyleClass().add(isWin ? "lbl-end-winner" : "lbl-end-loser");
         lblTime.setText("Time: " + totalMinutes + "m " + totalSeconds + "s");
         lblHits.setText("Total Guesses: " + guesses.size());
-        lblMisses.setText("Wrong Guesses: " + wr);
+        lblMisses.setText("Wrong Guesses: " + wrongguess);
+        var scr = (guesses.size()-wrongguess)*100-wrongguess*20;
+        if (scr<0)scr=0;
+        lblScore.setText("YOUR SCORE: "+ scr);
+
     }
 
     private Timeline buildTransitions(Node target, Runnable onFinished) {
-        Timeline animation = new Timeline(new KeyFrame(Duration.millis(400),
-                                                       new KeyValue(target.opacityProperty(), 1.0),
-                                                       new KeyValue(target.scaleXProperty(), 5),
-                                                       new KeyValue(target.scaleYProperty(), 5)),
-                                                       new KeyFrame(Duration.millis(500)),
-                                                       new KeyFrame(Duration.millis(600),
-                                                       new KeyValue(target.opacityProperty(), 0)));
+        Timeline animation = new Timeline(new KeyFrame(Duration.millis(100),
+                new KeyValue(target.opacityProperty(), 1.0),
+                new KeyValue(target.scaleXProperty(), 5),
+                new KeyValue(target.scaleYProperty(), 5)),
+                new KeyFrame(Duration.millis(500)),
+                new KeyFrame(Duration.millis(600),
+                        new KeyValue(target.opacityProperty(), 0)));
         animation.setOnFinished(evt -> {
             target.setScaleX(1);
             target.setScaleY(1);
@@ -293,7 +287,7 @@ public class GameScreen implements Screen {
         botShips = Board.randomShips().getShipsPositions();
         player = Player.create("user");
         player2 = new CheaterBattleshipBot(gamePreparationData.getDifficult().getHitProbability(),
-                                           gamePreparationData.getShipsPositions());
+                gamePreparationData.getShipsPositions());
         manager = GameManager.create(BoardGame.create(player, player2));
         manager.addShips(player2, botShips);
         manager.addShips(player, gamePreparationData.getShipsPositions());
@@ -323,10 +317,10 @@ public class GameScreen implements Screen {
         if (!guessAlreadyMade) {
             paintPlayer2Board();
             ctx.drawImage(IMG_TARGET,
-                          location.x() * tileWidth,
-                          location.y() * tileHeight,
-                          tileWidth,
-                          tileHeight);
+                    location.x() * tileWidth,
+                    location.y() * tileHeight,
+                    tileWidth,
+                    tileHeight);
             targetLocationProperty.set(location);
             if (e.getClickCount() == 2) {
                 playerGuess();
@@ -337,13 +331,15 @@ public class GameScreen implements Screen {
 
     private void paintPlayerBoard() {
         var player2Guesses = manager.stats().getGuesses().get(player2);
-        BattleshipPainter.paintBoard(playerCanvas, gamePreparationData.getShipsPositions(), player2Guesses);
+        BattleshipPainter.paintBoard(playerCanvas, gamePreparationData.getShipsPositions(), player2Guesses,Color.STEELBLUE);
+
     }
 
     private void paintPlayer2Board() {
         List<ShipPosition> possibleBotShips = manager.state() == GameState.FINISHED ? botShips : Collections.emptyList();
         var playerGuesses = manager.stats().getGuesses().get(player);
-        BattleshipPainter.paintBoard(player2Canvas, possibleBotShips, playerGuesses);
+        BattleshipPainter.paintBoard(player2Canvas, possibleBotShips, playerGuesses,Color.STEELBLUE);
+
     }
 
     private void playerGuess() {

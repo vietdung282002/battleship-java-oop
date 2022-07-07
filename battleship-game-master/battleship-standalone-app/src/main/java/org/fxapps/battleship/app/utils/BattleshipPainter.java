@@ -21,34 +21,33 @@ import org.fxapps.battleship.model.ShipPosition;
 
 public class BattleshipPainter {
 
-    private static final Color SEA_COLOR = Color.MIDNIGHTBLUE;
-    
+
     static Map<String, Image> imageCache = new HashMap<>();
     final static Random random = new Random();
 
     private BattleshipPainter() {}
 
-    public static void paintBoard(Canvas canvas, Board board) {
-        paintBoard(canvas, board.getShipsPositions(), board.getCols(), board.getCols());
+    public static void paintBoard(Canvas canvas, Board board,Color color) {
+        paintBoard(canvas, board.getShipsPositions(), board.getCols(), board.getCols(),color);
     }
 
-    public static void paintBoard(Canvas canvas, List<ShipPosition> shipPositions, int cols, int rows) {
-        paintBoard(canvas, shipPositions, Collections.emptyList(), cols, rows);
+    public static void paintBoard(Canvas canvas, List<ShipPosition> shipPositions, int cols, int rows,Color color) {
+        paintBoard(canvas, shipPositions, Collections.emptyList(), cols, rows,color);
     }
 
-    public static void paintBoard(Canvas canvas, List<ShipPosition> shipPositions) {
-        paintBoard(canvas, shipPositions, Collections.emptyList(), Board.DEFAULT_COLS, Board.DEFAULT_ROWS);
+    public static void paintBoard(Canvas canvas, List<ShipPosition> shipPositions,Color color) {
+        paintBoard(canvas, shipPositions, Collections.emptyList(), Board.DEFAULT_COLS, Board.DEFAULT_ROWS,color);
     }
 
-    public static void paintBoard(Canvas canvas, List<ShipPosition> shipPositions, List<Guess> guesses) {
-        paintBoard(canvas, shipPositions, guesses, Board.DEFAULT_COLS, Board.DEFAULT_ROWS);
+    public static void paintBoard(Canvas canvas, List<ShipPosition> shipPositions, List<Guess> guesses,Color color) {
+        paintBoard(canvas, shipPositions, guesses, Board.DEFAULT_COLS, Board.DEFAULT_ROWS,color);
     }
 
-    public static void paintBoard(Canvas canvas, List<ShipPosition> shipsPositions, List<Guess> guesses, int boardCols, int boardRows) {
+    public static void paintBoard(Canvas canvas, List<ShipPosition> shipsPositions, List<Guess> guesses, int boardCols, int boardRows,Color color) {
         final var tileWidth = canvas.getWidth() / boardCols;
         final var tileHeight = canvas.getHeight() / boardRows;
         var ctx = canvas.getGraphicsContext2D();
-        paintEmptyBoard(ctx, boardCols, boardRows, tileWidth, tileHeight);
+        paintEmptyBoard(ctx, boardCols, boardRows, tileWidth, tileHeight,color);
         paintShips(ctx, shipsPositions, tileWidth, tileHeight);
         paintsGuesses(ctx, guesses, tileWidth, tileHeight);
     }
@@ -75,19 +74,19 @@ public class BattleshipPainter {
                 image = fireImage;
             }
             ctx.drawImage(image,
-                          guess.getLocation().x() * tileWidth,
-                          guess.getLocation().y() * tileHeight,
-                          tileWidth,
-                          tileHeight);
+                    guess.getLocation().x() * tileWidth,
+                    guess.getLocation().y() * tileHeight,
+                    tileWidth,
+                    tileHeight);
         }
     }
 
-    private static void paintEmptyBoard(GraphicsContext ctx, int boardCols, int boardRows, final double tileWidth, final double tileHeight) {
+    private static void paintEmptyBoard(GraphicsContext ctx, int boardCols, int boardRows, final double tileWidth, final double tileHeight,Color color) {
         ctx.setLineWidth(0.2);
-        ctx.setStroke(Color.GAINSBORO);
+        ctx.setStroke(Color.DARKSALMON);
         ctx.setFont(Font.font(tileHeight / 5));
 
-        ctx.setFill(SEA_COLOR);
+        ctx.setFill(color);
         ctx.fillRect(0, 0, tileWidth * boardCols, tileHeight * boardCols);
 
         for (int i = 0; i < boardCols; i++) {

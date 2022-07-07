@@ -1,15 +1,21 @@
 package org.fxapps.battleship.app.screens;
 
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 import javafx.scene.layout.VBox;
+import java.util.*;
+import java.util.Optional;
+
 
 public class HomeScreen implements Screen {
 
@@ -17,6 +23,8 @@ public class HomeScreen implements Screen {
     private Runnable startAction;
     private BorderPane borderPane;
     private Label lblTop;
+
+    public static String playername;
 
     public HomeScreen(Runnable startAction) {
         super();
@@ -51,7 +59,6 @@ public class HomeScreen implements Screen {
         BorderPane.setAlignment(lblTop, Pos.BOTTOM_CENTER);
         BorderPane.setMargin(root, new Insets(25, 0, 50, 0));
         BorderPane.setAlignment(root, Pos.CENTER);
-
     }
 
     @Override

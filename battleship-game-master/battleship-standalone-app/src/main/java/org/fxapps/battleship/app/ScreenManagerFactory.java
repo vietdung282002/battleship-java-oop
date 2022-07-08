@@ -8,7 +8,6 @@ import org.fxapps.battleship.app.screens.HomeScreen;
 import org.fxapps.battleship.app.screens.PreparationScreen;
 import org.fxapps.battleship.app.screens.Screen;
 import org.fxapps.battleship.app.screens.ScreenManager;
-import javafx.scene.Parent;
 
 public class ScreenManagerFactory {
 

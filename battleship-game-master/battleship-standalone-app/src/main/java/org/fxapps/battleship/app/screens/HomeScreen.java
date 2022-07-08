@@ -1,20 +1,13 @@
 package org.fxapps.battleship.app.screens;
 
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.text.Font;
 import javafx.scene.layout.VBox;
-import java.util.*;
-import java.util.Optional;
 
 
 public class HomeScreen implements Screen {
@@ -23,8 +16,6 @@ public class HomeScreen implements Screen {
     private Runnable startAction;
     private BorderPane borderPane;
     private Label lblTop;
-
-    public static String playername;
 
     public HomeScreen(Runnable startAction) {
         super();
@@ -39,21 +30,18 @@ public class HomeScreen implements Screen {
         root.setPadding(new Insets(15,20, 10,10));
 
         var btnStart = new Button("Start");
-        var btnScore = new Button("LeaderBoard");
         
         lblTop = new Label("Battleship");
         borderPane = new BorderPane();
         lblTop.getStyleClass().add("lbl-app-title");
         lblTop.getStyleClass().add("normal-title");
         btnStart.getStyleClass().add("btn-start");
-        btnScore.getStyleClass().add("btn-start");
 
 
         btnStart.setOnAction(e -> startAction.run());
         borderPane.setTop(lblTop);
         borderPane.setCenter(root);
         root.getChildren().add(btnStart);
-        root.getChildren().add(btnScore);
 
         BorderPane.setMargin(lblTop, new Insets(50, 0, 150, 0));
         BorderPane.setAlignment(lblTop, Pos.BOTTOM_CENTER);

@@ -192,7 +192,7 @@ public class GameScreen implements Screen {
         var Rec2 = new Rectangle(player2Canvas.getWidth()-5,50);
 
 
-        PlayerName =new Text("PlayerName");
+        PlayerName =new Text("Player");
         Player2Name = new Text("Computer");
 
 

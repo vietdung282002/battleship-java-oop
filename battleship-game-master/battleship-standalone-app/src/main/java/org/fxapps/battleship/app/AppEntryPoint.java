@@ -23,6 +23,7 @@ public class AppEntryPoint extends Application {
         var gameRoot = manager.root();
         var scene = new Scene(new StackPane(gameRoot), WIDTH, HEIGHT);
         scene.getStylesheets().add("battleship-style.css");
+        stage.setTitle("Battleship");
         stage.setMaximized(true);
         stage.setScene(scene);
         stage.show();

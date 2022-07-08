@@ -83,7 +83,7 @@ public class BattleshipPainter {
 
     private static void paintEmptyBoard(GraphicsContext ctx, int boardCols, int boardRows, final double tileWidth, final double tileHeight,Color color) {
         ctx.setLineWidth(0.2);
-        ctx.setStroke(Color.DARKSALMON);
+        ctx.setStroke(Color.BLACK);
         ctx.setFont(Font.font(tileHeight / 5));
 
         ctx.setFill(color);
@@ -95,11 +95,11 @@ public class BattleshipPainter {
                 var y = j * tileHeight;
                 ctx.strokeRect(x, y, tileWidth, tileHeight);
                 if (i == 0) {
-                    ctx.setFill(Color.WHITE);
+                    ctx.setFill(Color.BLACK);
                     //ctx.fillText(j + 1 + "", 2, y + tileHeight - 2);
                 }
                 if (j == 0) {
-                    ctx.setFill(Color.WHITE);
+                    ctx.setFill(Color.BLACK);
                     char charCode = (char) (65 + i);
                     //ctx.fillText(String.valueOf(charCode), x + 2, 15);
                 }

@@ -80,8 +80,8 @@ Custom Classes
 
 .lbl-app-title {
 	-fx-font-weight: bold;
-	-fx-text-fill: cadetblue;
-	-fx-effect: innershadow(gaussian, darkslateblue, 10, 0.5, 0, 0);
+	-fx-text-fill: white;
+	/*-fx-effect: innershadow(gaussian, darkslateblue, 10, 0.5, 0, 0);*/
 	-fx-font-size: 70px;
 }
 
@@ -139,7 +139,7 @@ Custom Classes
 
 .lbl-screen-title {
 	-fx-font-weight: bold;
-	-fx-text-fill: steelblue;
+	-fx-text-fill: white;
 	-fx-font-size: 20px;
 }
 
@@ -196,7 +196,7 @@ Custom Classes
 
 .toolbar>.label {
 	-fx-font-size: 20px;
-	-fx-text-fill: #3333AA;
+	-fx-text-fill: white;
 }
 
 .tb-vertical {

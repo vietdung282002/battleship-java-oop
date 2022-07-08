@@ -7,7 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="battleship-bot" />
-        <module name="battleship-apps" />
         <module name="battleship-api" />
         <module name="battleship-standalone-app" />
       </profile>

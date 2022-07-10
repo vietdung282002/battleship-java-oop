@@ -1,9 +1,11 @@
 package org.fxapps.battleship.app.screens;
 
+import java.io.*;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 import javafx.animation.Animation.Status;
 import javafx.animation.KeyFrame;
@@ -139,6 +141,7 @@ public class GameScreen implements Screen {
         vbox.setAlignment(Pos.CENTER);
         var vbGameOverOverlay = new VBox(40);
         var btnNewGame = new Button("New Game");
+        String plyname = "";
 
         btnFire = new Button("Fire");
         lblEndTitle = new Label("You Lose!");
@@ -192,7 +195,19 @@ public class GameScreen implements Screen {
         var Rec2 = new Rectangle(player2Canvas.getWidth()-5,50);
 
 
-        PlayerName =new Text("Player");
+        try {
+            File myObj = new File("C:/Users/huyho/battleship-java-oop/name.txt");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                plyname = myReader.nextLine();
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        PlayerName =new Text(plyname);
         Player2Name = new Text("Computer");
 
 

@@ -30,5 +30,6 @@ public class AppEntryPoint extends Application {
         Runnable resize = () -> manager.resize(scene.getWidth(), scene.getHeight());
         scene.widthProperty().addListener(l -> resize.run());
         scene.heightProperty().addListener(l -> resize.run());
+
     }
 }

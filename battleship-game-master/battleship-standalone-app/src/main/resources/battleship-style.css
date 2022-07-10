@@ -74,8 +74,19 @@ Custom Classes
 	-fx-font-size: 32px
 }
 
+.btn-reset{
+    -fx-font-size: 25px;
+}
+
 .lbl-bottom {
 	-fx-font-style: italic;
+}
+
+.lbl-score {
+	-fx-font-weight: bold;
+	-fx-text-fill: white;
+	/*-fx-effect: innershadow(gaussian, darkslateblue, 10, 0.5, 0, 0);*/
+	-fx-font-size: 40px;
 }
 
 .lbl-app-title {

@@ -194,9 +194,9 @@ public class GameScreen implements Screen {
         var Rec1 = new Rectangle(player2Canvas.getWidth()-5,50);
         var Rec2 = new Rectangle(player2Canvas.getWidth()-5,50);
 
-        File myObj = new File("C:/Users/huyho/battleship-java-oop/name.txt");
-        try {
 
+        try {
+            File myObj = new File("/images/name.txt");
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 plyname = myReader.nextLine();

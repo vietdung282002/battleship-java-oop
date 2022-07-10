@@ -36,7 +36,6 @@ public class HomeScreen implements Screen {
         Optional<String> result = inputname.showAndWait();
         result.ifPresent(name->{
             File file = new File("C:/Users/huyho/battleship-java-oop/name.txt");
-
             file.getParentFile().mkdirs();
             try {
                 PrintWriter writer = new PrintWriter(file);
@@ -44,8 +43,9 @@ public class HomeScreen implements Screen {
                 writer.close();
                 FileWriter fileWriter = new FileWriter(file,true);
                 fileWriter.write(name);
-                startAction.run();
                 fileWriter.close();
+                startAction.run();
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

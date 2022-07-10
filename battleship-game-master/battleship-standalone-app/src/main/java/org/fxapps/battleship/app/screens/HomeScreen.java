@@ -12,6 +12,7 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
+import java.io.*;
 import java.util.Optional;
 
 
@@ -34,7 +35,21 @@ public class HomeScreen implements Screen {
         inputname.setContentText("Name:");
         Optional<String> result = inputname.showAndWait();
         result.ifPresent(name->{
-            startAction.run();
+            File file = new File("C:/Users/huyho/battleship-java-oop/name.txt");
+
+            file.getParentFile().mkdirs();
+            try {
+                PrintWriter writer = new PrintWriter(file);
+                writer.print("");
+                writer.close();
+                FileWriter fileWriter = new FileWriter(file,true);
+                fileWriter.write(name);
+                startAction.run();
+                fileWriter.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
         });
     }
 
@@ -45,7 +60,7 @@ public class HomeScreen implements Screen {
         root.setPadding(new Insets(15,20, 10,10));
 
         var btnStart = new Button("Start");
-        
+
         lblTop = new Label("Battleship");
         borderPane = new BorderPane();
         lblTop.getStyleClass().add("lbl-app-title");

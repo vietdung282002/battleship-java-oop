@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/battleship-game-master/battleship-api/battleship-api.iml" filepath="$PROJECT_DIR$/battleship-game-master/battleship-api/battleship-api.iml" />
-      <module fileurl="file://$PROJECT_DIR$/battleship-game-master/battleship-apps/battleship-apps.iml" filepath="$PROJECT_DIR$/battleship-game-master/battleship-apps/battleship-apps.iml" />
       <module fileurl="file://$PROJECT_DIR$/battleship-game-master/battleship-bot/battleship-bot.iml" filepath="$PROJECT_DIR$/battleship-game-master/battleship-bot/battleship-bot.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/battleship-java-oop.iml" filepath="$PROJECT_DIR$/.idea/battleship-java-oop.iml" />
       <module fileurl="file://$PROJECT_DIR$/battleship-game-master/battleship-parent.iml" filepath="$PROJECT_DIR$/battleship-game-master/battleship-parent.iml" />

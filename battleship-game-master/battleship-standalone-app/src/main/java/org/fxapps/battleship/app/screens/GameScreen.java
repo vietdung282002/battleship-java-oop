@@ -197,19 +197,7 @@ public class GameScreen implements Screen {
         var Rec2 = new Rectangle(player2Canvas.getWidth()-5,50);
 
 
-        try {
-            File myObj = new File("/images/name.txt");
-            Scanner myReader = new Scanner(myObj);
-            while (myReader.hasNextLine()) {
-                plyname = myReader.nextLine();
-            }
-            myReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
-
-        PlayerName =new Text(plyname);
+        PlayerName =new Text("Player");
         Player2Name = new Text("Computer");
 
 

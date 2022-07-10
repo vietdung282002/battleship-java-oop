@@ -3,12 +3,7 @@ package org.fxapps.battleship.app;
 import java.util.function.Consumer;
 
 import org.fxapps.battleship.app.model.GamePreparationData;
-import org.fxapps.battleship.app.screens.GameScreen;
-import org.fxapps.battleship.app.screens.HomeScreen;
-import org.fxapps.battleship.app.screens.PreparationScreen;
-import org.fxapps.battleship.app.screens.Screen;
-import org.fxapps.battleship.app.screens.ScreenManager;
-import org.fxapps.battleship.app.screens.LeaderboardScreen;
+import org.fxapps.battleship.app.screens.*;
 
 public class ScreenManagerFactory {
 

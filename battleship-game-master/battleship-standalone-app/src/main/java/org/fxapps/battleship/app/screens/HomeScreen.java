@@ -31,28 +31,6 @@ public class HomeScreen implements Screen {
         init();
     }
 
-    public void ShowInput(){
-        TextInputDialog inputname = new TextInputDialog();
-        inputname.setHeaderText("Enter your name:");
-        inputname.setContentText("Name:");
-        Optional<String> result = inputname.showAndWait();
-        result.ifPresent(name->{
-            File file = new File("/images/name.txt");
-
-            file.getParentFile().mkdirs();
-            try {
-                PrintWriter writer = new PrintWriter(file);
-                writer.print("");
-                writer.close();
-                FileWriter fileWriter = new FileWriter(file,true);
-                fileWriter.write(name);
-                startAction.run();
-                fileWriter.close();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-    }
 
     public void init() {
         VBox root = new VBox();
@@ -72,7 +50,9 @@ public class HomeScreen implements Screen {
         btnScore.getStyleClass().add("btn-start");
 
 
-        //btnStart.setOnAction(e -> startAction.run());
+        btnStart.setOnAction(e -> startAction.run());
+        btnScore.setOnAction(e -> startAction2.run());
+
         borderPane.setTop(lblTop);
         borderPane.setCenter(root);
         root.getChildren().add(btnStart);
@@ -82,13 +62,6 @@ public class HomeScreen implements Screen {
         BorderPane.setAlignment(lblTop, Pos.BOTTOM_CENTER);
         BorderPane.setMargin(root, new Insets(25, 0, 50, 0));
         BorderPane.setAlignment(root, Pos.CENTER);
-        btnStart.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                ShowInput();
-            }
-        });
-        btnScore.setOnAction(e -> startAction2.run());
 
     }
 

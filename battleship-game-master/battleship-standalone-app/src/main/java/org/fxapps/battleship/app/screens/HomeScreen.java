@@ -37,7 +37,7 @@ public class HomeScreen implements Screen {
         inputname.setContentText("Name:");
         Optional<String> result = inputname.showAndWait();
         result.ifPresent(name->{
-            File file = new File("D:/dung/HUST/20212/OOP/game/battleship-java-oop/name.txt");
+            File file = new File("/images/name.txt");
 
             file.getParentFile().mkdirs();
             try {

@@ -6,7 +6,9 @@ import java.time.temporal.ChronoUnit;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
-
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import javafx.animation.Animation.Status;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -196,7 +198,7 @@ public class GameScreen implements Screen {
 
 
         try {
-            File myObj = new File("C:/Users/huyho/battleship-java-oop/name.txt");
+            File myObj = new File("D:/dung/HUST/20212/OOP/game/battleship-java-oop/name.txt");
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 plyname = myReader.nextLine();
@@ -275,7 +277,6 @@ public class GameScreen implements Screen {
         var scr = (guesses.size()-wrongguess)*100-wrongguess*20;
         if (scr<0)scr=0;
         lblScore.setText("YOUR SCORE: "+ scr);
-
     }
 
     private Timeline buildTransitions(Node target, Runnable onFinished) {

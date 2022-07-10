@@ -12,13 +12,14 @@ public class ShipPosition {
     private int endY;
     private boolean isVertical;
     private List<Location> locations;
-    /*public static ShipPosition horizontal(Ship ship, int x, int y) {
+
+    public static ShipPosition horizontal(Ship ship, int x, int y) {
         return create(ship, x, y, false);
     }
 
     public static ShipPosition vertical(Ship ship, int x, int y) {
         return create(ship, x, y, true);
-    }*/
+    }
 
     public static ShipPosition create(Ship ship, Location location, boolean isVertical) {
         return create(ship, location.x(), location.y(), isVertical);

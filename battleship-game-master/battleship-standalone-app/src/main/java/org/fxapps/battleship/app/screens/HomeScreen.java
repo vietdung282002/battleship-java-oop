@@ -20,12 +20,14 @@ public class HomeScreen implements Screen {
 
 
     private Runnable startAction;
+    private Runnable startAction2;
     private BorderPane borderPane;
     private Label lblTop;
 
-    public HomeScreen(Runnable startAction) {
+    public HomeScreen(Runnable startAction,Runnable startAction2  ) {
         super();
         this.startAction = startAction;
+        this.startAction2=startAction2;
         init();
     }
 
@@ -35,7 +37,7 @@ public class HomeScreen implements Screen {
         inputname.setContentText("Name:");
         Optional<String> result = inputname.showAndWait();
         result.ifPresent(name->{
-            File file = new File("C:/Users/huyho/battleship-java-oop/name.txt");
+            File file = new File("D:/dung/HUST/20212/OOP/game/battleship-java-oop/name.txt");
 
             file.getParentFile().mkdirs();
             try {
@@ -49,7 +51,6 @@ public class HomeScreen implements Screen {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
         });
     }
 
@@ -60,18 +61,22 @@ public class HomeScreen implements Screen {
         root.setPadding(new Insets(15,20, 10,10));
 
         var btnStart = new Button("Start");
+        var btnScore = new Button("LeaderBoard");
+
 
         lblTop = new Label("Battleship");
         borderPane = new BorderPane();
         lblTop.getStyleClass().add("lbl-app-title");
         lblTop.getStyleClass().add("normal-title");
         btnStart.getStyleClass().add("btn-start");
+        btnScore.getStyleClass().add("btn-start");
 
 
         //btnStart.setOnAction(e -> startAction.run());
         borderPane.setTop(lblTop);
         borderPane.setCenter(root);
         root.getChildren().add(btnStart);
+        root.getChildren().add(btnScore);
 
         BorderPane.setMargin(lblTop, new Insets(50, 0, 150, 0));
         BorderPane.setAlignment(lblTop, Pos.BOTTOM_CENTER);
@@ -83,6 +88,8 @@ public class HomeScreen implements Screen {
                 ShowInput();
             }
         });
+        btnScore.setOnAction(e -> startAction2.run());
+
     }
 
     @Override

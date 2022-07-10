@@ -35,6 +35,12 @@ public class LeaderboardScreen implements Screen {
         borderPane.setBottom(btnReset);
         BorderPane.setMargin(btnReset, new Insets(50, 0, 150, 0));
         BorderPane.setAlignment(btnReset, Pos.BOTTOM_CENTER);
+
+
+        var btnexit = new Button("Exit");
+        borderPane.setCenter(btnexit);
+        BorderPane.setAlignment(btnexit, Pos.BOTTOM_CENTER);
+        btnexit.setOnAction(e -> homeScreenCallback.run());
     }
 
 
@@ -50,6 +56,8 @@ public class LeaderboardScreen implements Screen {
     }
     @Override
     public void onShow() {
+
+
 
     }
 }

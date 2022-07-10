@@ -12,6 +12,8 @@ public interface Screen {
     
     void onShow();
 
+
+
     default void resize(double width, double height) {
         // do nothing by default
     }

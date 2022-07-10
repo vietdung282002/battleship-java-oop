@@ -5,10 +5,6 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import javafx.animation.Animation.Status;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -55,6 +51,7 @@ public class GameScreen implements Screen {
     SimpleBooleanProperty isPlayerTurnProperty = new SimpleBooleanProperty(false);
     SimpleObjectProperty<Location> targetLocationProperty = new SimpleObjectProperty<>();
     SimpleObjectProperty<GameState> gameStateProperty = new SimpleObjectProperty<>();
+
 
     private GameManager manager;
 
@@ -143,7 +140,6 @@ public class GameScreen implements Screen {
         vbox.setAlignment(Pos.CENTER);
         var vbGameOverOverlay = new VBox(40);
         var btnNewGame = new Button("New Game");
-        String plyname = "";
 
         btnFire = new Button("Fire");
         lblEndTitle = new Label("You Lose!");
@@ -265,6 +261,7 @@ public class GameScreen implements Screen {
         var scr = (guesses.size()-wrongguess)*100-wrongguess*20;
         if (scr<0)scr=0;
         lblScore.setText("YOUR SCORE: "+ scr);
+
     }
 
     private Timeline buildTransitions(Node target, Runnable onFinished) {

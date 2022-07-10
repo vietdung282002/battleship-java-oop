@@ -1,19 +1,14 @@
 package org.fxapps.battleship.app.screens;
 
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
-import java.io.*;
-import java.util.Optional;
 
 
 public class HomeScreen implements Screen {
@@ -23,6 +18,7 @@ public class HomeScreen implements Screen {
     private Runnable startAction2;
     private BorderPane borderPane;
     private Label lblTop;
+
 
     public HomeScreen(Runnable startAction,Runnable startAction2  ) {
         super();

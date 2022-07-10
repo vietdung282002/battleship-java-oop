@@ -35,9 +35,9 @@ public class GameStats {
         return stats;
     }
 
-    public String getId() {
+    /*public String getId() {
         return id;
-    }
+    }*/
 
     public LocalDateTime getStarted() {
         return started;

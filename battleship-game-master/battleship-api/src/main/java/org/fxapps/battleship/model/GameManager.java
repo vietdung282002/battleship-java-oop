@@ -160,9 +160,9 @@ public class GameManager implements BattleshipGame {
         return id;
     }
 
-    BoardGame getBoardGame() {
+    /*BoardGame getBoardGame() {
         return boardGame;
-    }
+    }*/
 
     private void addShip(Player player, Ship ship, int x, int y, boolean isVertical) {
         if (state != GameState.PREPARATION) {

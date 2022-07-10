@@ -9,13 +9,13 @@ public class Guess {
 
     }
 
-    public static Guess miss(int x, int y) {
+    /*public static Guess miss(int x, int y) {
         return create(x, y, false);
     }
 
     public static Guess hit(int x, int y) {
         return create(x, y, true);
-    }
+    }*/
 
     public static Guess create(int x, int y, boolean hit) {
         Guess guess = new Guess();

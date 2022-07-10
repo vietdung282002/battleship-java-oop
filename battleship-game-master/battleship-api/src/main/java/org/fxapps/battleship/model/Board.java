@@ -47,11 +47,11 @@ public class Board {
         return board;
     }
 
-    public static Board randomShips(int rows, int cols) {
+    /*public static Board randomShips(int rows, int cols) {
         var board = create(rows, cols);
         board.addRandomShipPositions();
         return board;
-    }
+    }*/
 
     public Optional<ShipPosition> placeShip(Ship ship, Location location, boolean isVertical) {
         ShipPosition shipPosition = ShipPosition.create(ship, location, isVertical);

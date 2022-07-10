@@ -30,7 +30,7 @@ public class PreparationScreen implements Screen {
     VBox root;
     Board board = Board.create();
     private ComboBox<Ship> cbShips;
-    private ToggleButton tbIsVertical;
+    private ToggleButton    tbIsVertical;
     private Canvas canvas;
 
     public PreparationScreen(Consumer<GamePreparationData> onPreparationFinished) {

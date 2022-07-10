@@ -19,7 +19,6 @@ public interface BattleshipGame {
 
     void addVerticalShip(Player player, Ship ship, int x, int y);
 
-
     void addHorizontalShip(Player player, Ship ship, int x, int y);
 
 
@@ -58,7 +57,7 @@ public interface BattleshipGame {
 
     Optional<Player> waitingPlayer();
 
-    public static BattleshipGame create(Player player1, Player player2) {
+    static BattleshipGame create(Player player1, Player player2) {
         BoardGame boardGame = BoardGame.create(player1, player2);
         return GameManager.create(boardGame);
     }

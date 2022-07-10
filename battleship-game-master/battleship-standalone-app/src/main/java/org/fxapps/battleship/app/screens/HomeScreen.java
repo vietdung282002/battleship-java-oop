@@ -1,13 +1,18 @@
 package org.fxapps.battleship.app.screens;
 
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+
+import java.util.Optional;
 
 
 public class HomeScreen implements Screen {
@@ -21,6 +26,16 @@ public class HomeScreen implements Screen {
         super();
         this.startAction = startAction;
         init();
+    }
+
+    public void ShowInput(){
+        TextInputDialog inputname = new TextInputDialog();
+        inputname.setHeaderText("Enter your name:");
+        inputname.setContentText("Name:");
+        Optional<String> result = inputname.showAndWait();
+        result.ifPresent(name->{
+            startAction.run();
+        });
     }
 
     public void init() {
@@ -38,7 +53,7 @@ public class HomeScreen implements Screen {
         btnStart.getStyleClass().add("btn-start");
 
 
-        btnStart.setOnAction(e -> startAction.run());
+        //btnStart.setOnAction(e -> startAction.run());
         borderPane.setTop(lblTop);
         borderPane.setCenter(root);
         root.getChildren().add(btnStart);
@@ -47,6 +62,12 @@ public class HomeScreen implements Screen {
         BorderPane.setAlignment(lblTop, Pos.BOTTOM_CENTER);
         BorderPane.setMargin(root, new Insets(25, 0, 50, 0));
         BorderPane.setAlignment(root, Pos.CENTER);
+        btnStart.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                ShowInput();
+            }
+        });
     }
 
     @Override

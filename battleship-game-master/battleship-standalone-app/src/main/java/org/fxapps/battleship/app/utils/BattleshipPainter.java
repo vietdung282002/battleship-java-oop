@@ -84,7 +84,7 @@ public class BattleshipPainter {
     private static void paintEmptyBoard(GraphicsContext ctx, int boardCols, int boardRows, final double tileWidth, final double tileHeight,Color color) {
         ctx.setLineWidth(0.2);
         ctx.setStroke(Color.BLACK);
-        ctx.setFont(Font.font(tileHeight / 5));
+        ctx.setFont(Font.font(tileHeight / 2));
 
         ctx.setFill(color);
         ctx.fillRect(0, 0, tileWidth * boardCols, tileHeight * boardCols);

@@ -137,10 +137,10 @@ public class BoardGame {
                });
     }
 
-    static List<ShipPosition> getSunkShips(Collection<ShipPosition> positions,
+    /*static List<ShipPosition> getSunkShips(Collection<ShipPosition> positions,
                                            Collection<Guess> guesses) {
         return getSunkShips(positions, guesses, Collections.emptyList());
-    }
+    }*/
 
     static List<ShipPosition> getSunkShips(Collection<ShipPosition> positions,
                                            Collection<Guess> guesses,

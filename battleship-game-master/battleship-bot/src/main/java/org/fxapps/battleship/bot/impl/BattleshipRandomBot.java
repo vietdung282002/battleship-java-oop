@@ -12,7 +12,7 @@ public class BattleshipRandomBot extends Player implements BattleshipBot {
 
     static final String MSG_NO_MORE_GUESS = "No more Guess!";
     Random random = new Random();
-    Set<Location> history = new HashSet<>();
+    Set<Location>   history = new HashSet<>();
 
     public BattleshipRandomBot() {
         super("Random Bot");

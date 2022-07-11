@@ -8,8 +8,8 @@ public enum Ship {
     SUBMARINE("Submarine", 3),
     DESTROYER("Destroyer", 2);
 
-    final int spaces;
-    final String name;
+    private int spaces;
+    private String name;
 
     Ship(String name, int spaces) {
         this.name = name;

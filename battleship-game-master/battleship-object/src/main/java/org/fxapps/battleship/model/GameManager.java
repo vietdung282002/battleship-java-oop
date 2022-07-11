@@ -23,7 +23,7 @@ public class GameManager implements BattleshipGame {
     static final String MSG_NOT_THE_STATE_TO_UNREADY = "Can't set unready in this game state.";
     static final String MSG_NOT_THE_STATE_TO_REMOVE_SHIPS = "Not the state to remove ships.";
 
-    final Map<Player, Boolean> readyState = new HashMap<>();
+    private Map<Player, Boolean> readyState = new HashMap<>();
     private GameState state;
     private BoardGame boardGame;
     private String id;

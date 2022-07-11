@@ -39,6 +39,7 @@ import org.fxapps.battleship.model.GameState;
 import org.fxapps.battleship.model.Location;
 import org.fxapps.battleship.model.Player;
 import org.fxapps.battleship.model.ShipPosition;
+import org.fxapps.battleship.app.score.leaderboard;
 
 public class GameScreen implements Screen {
 
@@ -87,6 +88,8 @@ public class GameScreen implements Screen {
     private Text Player2Name;
 
     private Button btnFire;
+
+    private leaderboard LDB;
 
     public GameScreen(Runnable homeScreenCallback) {
         this.homeScreenCallback = homeScreenCallback;
@@ -242,7 +245,7 @@ public class GameScreen implements Screen {
             }
             paintBoards();
         });
-
+        LDB=new leaderboard();
     }
 
     private void updateLabels() {
@@ -258,10 +261,11 @@ public class GameScreen implements Screen {
         lblTime.setText("Time: " + totalMinutes + "m " + totalSeconds + "s");
         lblHits.setText("Total Guesses: " + guesses.size());
         lblMisses.setText("Wrong Guesses: " + wrongguess);
-        var scr = (guesses.size()-wrongguess)*100-wrongguess*20;
+        long scr = (guesses.size()-wrongguess)*100-wrongguess*20;
         if (scr<0)scr=0;
         lblScore.setText("YOUR SCORE: "+ scr);
-
+        int score=(int)scr;
+        LDB.add(score);
     }
 
     private Timeline buildTransitions(Node target, Runnable onFinished) {

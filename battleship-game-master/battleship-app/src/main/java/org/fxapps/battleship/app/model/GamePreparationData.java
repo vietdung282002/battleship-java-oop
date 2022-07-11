@@ -6,9 +6,9 @@ import org.fxapps.battleship.model.ShipPosition;
 
 public class GamePreparationData {
 
-    final List<ShipPosition> shipsPositions;
+    private List<ShipPosition> shipsPositions;
 
-    final Difficulty difficult;
+    private Difficulty difficult;
 
     private GamePreparationData(List<ShipPosition> shipsPositions,
                                 Difficulty difficult) {

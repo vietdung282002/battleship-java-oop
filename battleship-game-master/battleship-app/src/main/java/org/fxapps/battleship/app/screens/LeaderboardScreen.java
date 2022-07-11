@@ -8,11 +8,13 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import org.fxapps.battleship.app.screens.Screen;
+import org.fxapps.battleship.app.score.leaderboard;
 
 public class LeaderboardScreen implements Screen {
     private BorderPane borderPane;
     private Label lblTop;
     private Runnable homeScreenCallback;
+    private leaderboard LDB;
 
     public LeaderboardScreen(Runnable homeScreenCallback) {
         this.homeScreenCallback = homeScreenCallback;
@@ -20,6 +22,8 @@ public class LeaderboardScreen implements Screen {
     }
 
     public void init(){
+        LDB = new leaderboard();
+
         borderPane= new BorderPane();
         lblTop = new Label("LeaderBoard");
         lblTop.getStyleClass().add("lbl-app-title");
@@ -28,13 +32,11 @@ public class LeaderboardScreen implements Screen {
         BorderPane.setMargin(lblTop, new Insets(50, 0, 100, 0));
         BorderPane.setAlignment(lblTop, Pos.BOTTOM_CENTER);
 
-
-
-        Label first=new Label("1. ");
-        Label second=new Label("2. ");
-        Label third=new Label("3. ");
-        Label fourth=new Label("4. ");
-        Label fifth=new Label("5. ");
+        Label first=new Label("1. "+ LDB.display(0));
+        Label second=new Label("2. "+ LDB.display(1));
+        Label third=new Label("3. "+LDB.display(2));
+        Label fourth=new Label("4. "+LDB.display(3));
+        Label fifth=new Label("5. "+LDB.display(4));
 
         first.getStyleClass().add("lbl-score");
         second.getStyleClass().add("lbl-score");
@@ -55,11 +57,6 @@ public class LeaderboardScreen implements Screen {
         BorderPane.setMargin(btnReset, new Insets(50, 0, 100, 0));
         BorderPane.setAlignment(btnReset, Pos.BOTTOM_CENTER);
 
-
-        var btnexit = new Button("Exit");
-        borderPane.setCenter(btnexit);
-        BorderPane.setAlignment(btnexit, Pos.BOTTOM_CENTER);
-        btnexit.setOnAction(e -> homeScreenCallback.run());
     }
 
 

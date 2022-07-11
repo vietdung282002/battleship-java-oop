@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import org.fxapps.battleship.app.score.leaderboard;
 
 
 public class HomeScreen implements Screen {
@@ -18,6 +19,7 @@ public class HomeScreen implements Screen {
     private Runnable startAction2;
     private BorderPane borderPane;
     private Label lblTop;
+    private leaderboard LDB;
 
 
     public HomeScreen(Runnable startAction,Runnable startAction2  ) {
@@ -29,6 +31,7 @@ public class HomeScreen implements Screen {
 
 
     public void init() {
+        LDB = new leaderboard();
         VBox root = new VBox();
         root.setAlignment(Pos.TOP_CENTER);
         root.setSpacing(60);

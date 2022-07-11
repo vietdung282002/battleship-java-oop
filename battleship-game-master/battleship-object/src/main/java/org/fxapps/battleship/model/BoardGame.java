@@ -28,10 +28,10 @@ public class BoardGame {
     private Player player1;
     private Player player2;
 
-    final Map<Player, Board> playerBoard = new HashMap<>();
-    final Map<Player, List<Guess>> guesses = new HashMap<>();
+    private Map<Player, Board> playerBoard = new HashMap<>();
+    private Map<Player, List<Guess>> guesses = new HashMap<>();
 
-    final Map<Player, List<ShipPosition>> sunkenShipsByPlayer = new HashMap<>();
+    private Map<Player, List<ShipPosition>> sunkenShipsByPlayer = new HashMap<>();
 
     public static BoardGame create(Player player1, Player player2) {
         var game = new BoardGame();

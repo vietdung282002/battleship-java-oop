@@ -36,11 +36,12 @@ public class HomeScreen implements Screen {
         VBox root = new VBox();
         root.setAlignment(Pos.TOP_CENTER);
         root.setSpacing(60);
-        root.setPadding(new Insets(15,20, 10,10));
+        root.setPadding(new Insets(10,20, 10,10));
 
         var btnStart = new Button("Start");
         var btnScore = new Button("LeaderBoard");
-        var btnReset = new Button("Reset");
+        var btnReset = new Button("Reset Point");
+        var btnMusic = new Button("Music");
 
 
         lblTop = new Label("Battleship");
@@ -50,6 +51,7 @@ public class HomeScreen implements Screen {
         btnStart.getStyleClass().add("btn-start");
         btnScore.getStyleClass().add("btn-start");
         btnReset.getStyleClass().add("btn-start");
+        btnMusic.getStyleClass().add("btn-start");
 
 
         btnStart.setOnAction(e -> startAction.run());
@@ -68,8 +70,9 @@ public class HomeScreen implements Screen {
         root.getChildren().add(btnStart);
         root.getChildren().add(btnScore);
         root.getChildren().add(btnReset);
+        root.getChildren().add(btnMusic);
 
-        BorderPane.setMargin(lblTop, new Insets(50, 0, 150, 0));
+        BorderPane.setMargin(lblTop, new Insets(50, 0, 100, 0));
         BorderPane.setAlignment(lblTop, Pos.BOTTOM_CENTER);
         BorderPane.setMargin(root, new Insets(25, 0, 50, 0));
         BorderPane.setAlignment(root, Pos.CENTER);

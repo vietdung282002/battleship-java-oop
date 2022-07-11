@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/battleship-game-master/battleship-api/battleship-api.iml" filepath="$PROJECT_DIR$/battleship-game-master/battleship-api/battleship-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/battleship-game-master/battleship-app/battleship-app.iml" filepath="$PROJECT_DIR$/battleship-game-master/battleship-app/battleship-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/battleship-game-master/battleship-bot/battleship-bot.iml" filepath="$PROJECT_DIR$/battleship-game-master/battleship-bot/battleship-bot.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/battleship-java-oop.iml" filepath="$PROJECT_DIR$/.idea/battleship-java-oop.iml" />
-      <module fileurl="file://$PROJECT_DIR$/battleship-game-master/battleship-standalone-app/battleship-standalone-app.iml" filepath="$PROJECT_DIR$/battleship-game-master/battleship-standalone-app/battleship-standalone-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/battleship-game-master/battleship-object/battleship-object.iml" filepath="$PROJECT_DIR$/battleship-game-master/battleship-object/battleship-object.iml" />
+      <module fileurl="file://$PROJECT_DIR$/battleship-game-master/battleship-parent.iml" filepath="$PROJECT_DIR$/battleship-game-master/battleship-parent.iml" />
     </modules>
   </component>
 </project>

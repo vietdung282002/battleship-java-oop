@@ -6,15 +6,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="battleship-app" />
+        <module name="battleship-object" />
         <module name="battleship-bot" />
-        <module name="battleship-api" />
-        <module name="battleship-standalone-app" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="battleship-api" target="11" />
+      <module name="battleship-app" target="11" />
       <module name="battleship-apps" target="11" />
       <module name="battleship-bot" target="11" />
+      <module name="battleship-object" target="11" />
       <module name="battleship-parent" target="11" />
       <module name="battleship-standalone-app" target="11" />
     </bytecodeTargetLevel>

@@ -71,7 +71,7 @@ public class leaderboard implements Serializable {
     public void reset(){
         if(scores.size()>0){
             scores.replaceAll(t->0);
-            JOptionPane.showMessageDialog(null, "You have been reset");
+            JOptionPane.showMessageDialog(null, "Your point have been reset");
 
             try{
                 ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream("D:/dung/HUST/20212/OOP/game/battleship-java-oop/battleship-game-master/battleship-app/src/main/resources/score/scores.ser"));

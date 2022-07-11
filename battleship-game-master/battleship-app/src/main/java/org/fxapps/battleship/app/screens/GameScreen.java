@@ -83,6 +83,7 @@ public class GameScreen implements Screen {
     private Labeled lblMisses;
 
     private Labeled lblScore;
+
     private Text PlayerName;
 
     private Text Player2Name;

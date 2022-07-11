@@ -7,8 +7,8 @@
 		<artifactId>battleship-parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>battleship-standalone-app</artifactId>
-	<name>Battleship Standalone App</name>
+	<artifactId>battleship-app</artifactId>
+	<name>Battleship App</name>
 
 	<properties>
 		<javafx.version>14.0.2.1</javafx.version>
@@ -18,7 +18,7 @@
 		<!-- Battleship APIs -->
 		<dependency>
 			<groupId>org.fxapps.battleship</groupId>
-			<artifactId>battleship-api</artifactId>
+			<artifactId>battleship-object</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>

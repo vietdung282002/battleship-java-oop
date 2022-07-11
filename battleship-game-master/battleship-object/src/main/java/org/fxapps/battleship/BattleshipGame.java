@@ -12,8 +12,6 @@ import org.fxapps.battleship.model.Ship;
 import org.fxapps.battleship.model.ShipPosition;
 
 public interface BattleshipGame {
-
-
     String getId();
 
 

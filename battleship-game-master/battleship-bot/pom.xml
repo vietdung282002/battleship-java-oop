@@ -14,7 +14,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.fxapps.battleship</groupId>
-			<artifactId>battleship-api</artifactId>
+			<artifactId>battleship-object</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
 	</dependencies>

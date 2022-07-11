@@ -57,6 +57,7 @@ public class HomeScreen implements Screen {
         btnStart.setOnAction(e -> startAction.run());
         btnScore.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
+                LDB = new leaderboard();
                 LDB.display();
             }
         });

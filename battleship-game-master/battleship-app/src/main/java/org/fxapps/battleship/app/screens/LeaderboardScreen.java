@@ -34,9 +34,9 @@ public class LeaderboardScreen implements Screen {
 
         Label first=new Label("1. "+ LDB.display(0));
         Label second=new Label("2. "+ LDB.display(1));
-        Label third=new Label("3. "+LDB.display(2));
-        Label fourth=new Label("4. "+LDB.display(3));
-        Label fifth=new Label("5. "+LDB.display(4));
+        Label third=new Label("3. ");
+        Label fourth=new Label("4. );
+        Label fifth=new Label("5. ");
 
         first.getStyleClass().add("lbl-score");
         second.getStyleClass().add("lbl-score");

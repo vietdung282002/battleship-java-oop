@@ -23,7 +23,7 @@ public class BattleshipPainter {
 
 
     static Map<String, Image> imageCache = new HashMap<>();
-    final static Random random = new Random();
+    //final static Random random = new Random();
 
     private BattleshipPainter() {}
 

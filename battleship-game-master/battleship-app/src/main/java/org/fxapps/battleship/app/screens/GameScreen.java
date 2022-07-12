@@ -246,7 +246,6 @@ public class GameScreen implements Screen {
             }
             paintBoards();
         });
-        LDB=new leaderboard();
     }
 
     private void updateLabels() {
@@ -267,6 +266,8 @@ public class GameScreen implements Screen {
         lblScore.setText("YOUR SCORE: "+ scr);
         int score=(int)scr;
         LDB.add(score);
+        LDB.saveScores();
+        LDB.loadScore();
     }
 
     private Timeline buildTransitions(Node target, Runnable onFinished) {

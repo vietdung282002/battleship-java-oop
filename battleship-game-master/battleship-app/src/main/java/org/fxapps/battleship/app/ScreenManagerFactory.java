@@ -10,6 +10,7 @@ public class ScreenManagerFactory {
     private ScreenManager screenManager;
     private Screen preparationScreen;
     private Screen homeScreen;
+    private Screen LeaderboardScreen;
     private GameScreen gameScreen;
 
     public ScreenManager newScreenManager(double width, double height) {
@@ -18,12 +19,14 @@ public class ScreenManagerFactory {
             gameScreen.setGamePreparationData(gamePreparationData);
             screenManager.goTo(gameScreen.id());
         };
+        Runnable gotoLeaderboard = () ->screenManager.goTo(LeaderboardScreen.id());
         Runnable gotoHomeScreen = () ->screenManager.goTo(homeScreen.id());
 
         gameScreen = new GameScreen(goToPreparation);
         preparationScreen = new PreparationScreen(preparationDataConsumer);
-        homeScreen = new HomeScreen(goToPreparation);
-        screenManager = new ScreenManager(width, height, homeScreen, preparationScreen, gameScreen);
+        homeScreen = new HomeScreen(goToPreparation,gotoLeaderboard);
+        LeaderboardScreen = new LeaderboardScreen(gotoHomeScreen);
+        screenManager = new ScreenManager(width, height, homeScreen,LeaderboardScreen, preparationScreen, gameScreen);
         screenManager.home();
 
         return screenManager;

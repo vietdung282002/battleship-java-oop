@@ -12,27 +12,29 @@ import javafx.scene.layout.VBox;
 import org.fxapps.battleship.app.score.leaderboard;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import org.fxapps.battleship.app.score.leaderboard;
+
 
 
 public class HomeScreen implements Screen {
 
 
     private Runnable startAction;
+    private Runnable startAction2;
     private BorderPane borderPane;
     private Label lblTop;
     private leaderboard LDB;
 
 
-    public HomeScreen(Runnable startAction ) {
+    public HomeScreen(Runnable startAction,Runnable startAction2  ) {
         super();
         this.startAction = startAction;
+        this.startAction2=startAction2;
         init();
     }
 
 
     public void init() {
-        LDB = new leaderboard();
-
         VBox root = new VBox();
         root.setAlignment(Pos.TOP_CENTER);
         root.setSpacing(60);
@@ -40,7 +42,6 @@ public class HomeScreen implements Screen {
 
         var btnStart = new Button("Start");
         var btnScore = new Button("LeaderBoard");
-        var btnReset = new Button("Reset Point");
         var btnMusic = new Button("Music");
 
 
@@ -50,27 +51,16 @@ public class HomeScreen implements Screen {
         lblTop.getStyleClass().add("normal-title");
         btnStart.getStyleClass().add("btn-start");
         btnScore.getStyleClass().add("btn-start");
-        btnReset.getStyleClass().add("btn-start");
         btnMusic.getStyleClass().add("btn-start");
 
 
         btnStart.setOnAction(e -> startAction.run());
-        btnScore.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-                LDB = new leaderboard();
-                LDB.display();
-            }
-        });
-        btnReset.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-                LDB.reset();
-            }
-        });
+        btnScore.setOnAction(e -> startAction2.run());
+
         borderPane.setTop(lblTop);
         borderPane.setCenter(root);
         root.getChildren().add(btnStart);
         root.getChildren().add(btnScore);
-        root.getChildren().add(btnReset);
         root.getChildren().add(btnMusic);
 
         BorderPane.setMargin(lblTop, new Insets(50, 0, 100, 0));

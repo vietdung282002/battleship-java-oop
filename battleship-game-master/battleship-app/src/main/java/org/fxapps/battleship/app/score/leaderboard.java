@@ -14,7 +14,7 @@ public class leaderboard {
     private ArrayList<Integer> topScores;
 
     private leaderboard(){
-        filepath = new File("D:/dung/HUST/20212/OOP/game/battleship-java-oop/battleship-game-master/battleship-app/src/main/resources/score").getAbsolutePath();
+        filepath = new File("D:/dung/HUST/20212/OOP/battleship-apps/battleship-java-oop/battleship-game-master/battleship-app/src/main/resources/score").getAbsolutePath();
         highScores= "score.txt";
 
         topScores = new ArrayList<Integer>();

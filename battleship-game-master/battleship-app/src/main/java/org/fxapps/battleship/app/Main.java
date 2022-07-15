@@ -31,5 +31,6 @@ public class Main extends Application {
         scene.widthProperty().addListener(l -> resize.run());
         scene.heightProperty().addListener(l -> resize.run());
 
+
     }
 }

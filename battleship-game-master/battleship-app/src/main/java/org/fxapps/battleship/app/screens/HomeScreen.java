@@ -1,30 +1,32 @@
 package org.fxapps.battleship.app.screens;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.String;
+import java.net.URISyntaxException;
 import java.net.URL;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import org.fxapps.battleship.app.score.leaderboard;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import org.fxapps.battleship.app.score.leaderboard;
-
-
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.swing.*;
 
 public class HomeScreen implements Screen {
-
 
     private Runnable startAction;
     private Runnable startAction2;
     private BorderPane borderPane;
     private Label lblTop;
-    private leaderboard LDB;
-
 
     public HomeScreen(Runnable startAction,Runnable startAction2  ) {
         super();
@@ -33,8 +35,24 @@ public class HomeScreen implements Screen {
         init();
     }
 
+    void Playmusic(String musicLocation){
+        try{
+            File musicPath = new File(musicLocation);
+            if(musicPath.exists()){
+                AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioInput);
+                clip.stop();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 
     public void init() {
+        String filePath="D:/dung/HUST/20212/OOP/battleship-apps/battleship-java-oop/battleship-game-master/battleship-app/src/main/resources/Sounds/background.wav";
+
         VBox root = new VBox();
         root.setAlignment(Pos.TOP_CENTER);
         root.setSpacing(60);
@@ -42,13 +60,14 @@ public class HomeScreen implements Screen {
 
         var btnStart = new Button("Start");
         var btnScore = new Button("LeaderBoard");
-        var btnMusic = new Button("Music");
+        var btnMusic = new ToggleButton("Music ON/OFF");
 
 
         lblTop = new Label("Battleship");
         borderPane = new BorderPane();
         lblTop.getStyleClass().add("lbl-app-title");
         lblTop.getStyleClass().add("normal-title");
+
         btnStart.getStyleClass().add("btn-start");
         btnScore.getStyleClass().add("btn-start");
         btnMusic.getStyleClass().add("btn-start");
@@ -59,6 +78,7 @@ public class HomeScreen implements Screen {
 
         borderPane.setTop(lblTop);
         borderPane.setCenter(root);
+
         root.getChildren().add(btnStart);
         root.getChildren().add(btnScore);
         root.getChildren().add(btnMusic);
@@ -67,6 +87,34 @@ public class HomeScreen implements Screen {
         BorderPane.setAlignment(lblTop, Pos.BOTTOM_CENTER);
         BorderPane.setMargin(root, new Insets(25, 0, 50, 0));
         BorderPane.setAlignment(root, Pos.CENTER);
+
+        try{
+            File musicPath = new File(filePath);
+            if(musicPath.exists()){
+                AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioInput);
+                clip.start();
+                btnMusic.setOnAction(event -> {
+                    if (btnMusic.isSelected()) {
+                        clip.stop();
+                    }else {
+                        clip.start();                    }
+                });
+                /*btnMusic.setOnAction(new EventHandler<ActionEvent>() {
+
+                    @Override
+                    public void handle(ActionEvent event) {
+                        clip.stop();
+                    }
+                });*/
+            }else {
+                System.out.println("can't find file");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
 
     }
 

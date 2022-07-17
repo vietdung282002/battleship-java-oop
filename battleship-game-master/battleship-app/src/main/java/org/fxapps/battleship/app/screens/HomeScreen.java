@@ -35,21 +35,6 @@ public class HomeScreen implements Screen {
         init();
     }
 
-    void Playmusic(String musicLocation){
-        try{
-            File musicPath = new File(musicLocation);
-            if(musicPath.exists()){
-                AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
-                Clip clip = AudioSystem.getClip();
-                clip.open(audioInput);
-                clip.stop();
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-
     public void init() {
         String filePath="D:/dung/HUST/20212/OOP/battleship-apps/battleship-java-oop/battleship-game-master/battleship-app/src/main/resources/Sounds/background.wav";
 

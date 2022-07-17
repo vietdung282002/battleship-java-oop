@@ -1,7 +1,6 @@
 package org.fxapps.battleship.app.screens;
 
 import java.util.function.Consumer;
-
 import javafx.beans.Observable;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;

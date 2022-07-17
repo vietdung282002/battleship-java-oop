@@ -249,6 +249,7 @@ public class GameScreen implements Screen {
     }
 
     private void updateLabels() {
+        LDB=leaderboard.getInstance();
         var stats = manager.stats();
         var totalSeconds = stats.getStarted().until(LocalDateTime.now(), ChronoUnit.SECONDS);
         var totalMinutes = stats.getStarted().until(LocalDateTime.now(), ChronoUnit.MINUTES);
@@ -267,7 +268,6 @@ public class GameScreen implements Screen {
         int score=(int)scr;
         LDB.add(score);
         LDB.saveScores();
-        LDB.loadScore();
     }
 
     private Timeline buildTransitions(Node target, Runnable onFinished) {
@@ -297,8 +297,9 @@ public class GameScreen implements Screen {
         player2 = new CheaterBattleshipBot(gamePreparationData.getDifficult().getHitProbability(),
                 gamePreparationData.getShipsPositions());
         manager = GameManager.create(BoardGame.create(player, player2));
+        System.out.println(botShips.toString());
         manager.addShips(player2, botShips);
-        manager.addShips(player, gamePreparationData.getShipsPositions());
+        manager.addShips(player, gamePreparationData.   getShipsPositions());
         manager.ready(player);
         manager.ready(player2);
         manager.start();

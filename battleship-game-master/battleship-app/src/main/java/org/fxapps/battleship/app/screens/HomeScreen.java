@@ -45,7 +45,7 @@ public class HomeScreen implements Screen {
 
         var btnStart = new Button("Start");
         var btnScore = new Button("LeaderBoard");
-        var btnMusic = new ToggleButton("Music ON/OFF");
+        var btnMusic = new ToggleButton("Sound ON/OFF");
 
 
         lblTop = new Label("Battleship");

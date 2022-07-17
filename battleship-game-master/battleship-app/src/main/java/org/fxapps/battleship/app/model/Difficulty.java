@@ -2,9 +2,7 @@ package org.fxapps.battleship.app.model;
 
 public enum Difficulty {
 
-    HARD(100),
-
-    MEDIUM(50),
+    HARD(50),
     EASY(5);
 
 
